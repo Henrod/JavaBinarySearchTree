@@ -11,6 +11,7 @@ F_FLAGS = -type f -not \( -name "*.java" -or -name "Makefile" \)
 F_COMMAND = -delete
 
 all:
+	@mkdir -p class
 	$(JAVAC) $(FLAGS) $(SRC)
 
 exec: all
