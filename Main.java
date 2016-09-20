@@ -25,7 +25,7 @@ class Main {
 					break;
 				case "r":
 					data = sc.nextInt();
-					System.out.println(bst.rankWithParentLink(data));
+					System.out.println(bst.rankNoParentLink(data));
 					break;
 			}
 		}

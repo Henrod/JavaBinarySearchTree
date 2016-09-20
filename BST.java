@@ -60,7 +60,28 @@ class BST<E extends Comparable<E>> {
 	}
 
 	public int rankNoParentLink(E data) {
-		return 1;
+		if (data == null || mRoot == null) return -1;
+
+		Node node = mRoot;
+		int r = size(node.getLeft()) + 1;
+
+		while (node != null) {
+			if (node.getData().equals(data)) {
+				return r;
+			} else if (node.getData().compareTo(data) > 0) {
+				node = node.getLeft();
+				if (node != null) {
+					r = r - size(node.getRight()) - 1;
+				}
+			} else {
+				node = node.getRight();
+				if (node != null) {
+					r = r + size(node.getLeft()) + 1;
+				}
+			}
+		}
+
+		return -1;
 	}
 
 	private Node add(Node root, E data) {
