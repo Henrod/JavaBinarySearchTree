@@ -74,4 +74,27 @@ class BST<E extends Comparable<E>> {
 
 		return queue;
 	}
+
+	private int size(Node node)  {
+		if (node == null) return 0;
+
+		return node.getSize();
+	}
+
+	private Node select(Node root, int ith) {
+		if (root == null) return null;
+
+		int r = size(root.getLeft()) + 1;
+		if (ith == r) {
+			return root;
+		} else if (ith < r) {
+			return select(root.getLeft(), ith);
+		}
+
+		return select(root.getRight(), ith - r);
+	}
+
+	public Node select (int ith) {
+		return select(mRoot, ith);
+	}
 }
