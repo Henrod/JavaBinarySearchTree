@@ -6,21 +6,26 @@ class Main {
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
-			System.out.print("a: add value | i: ith number | p: print tree => ");
+			System.out.print("a: add value | i: ith number | p: print tree | r: rank => ");
 
 			String cmd = sc.next();
 
 			switch(cmd) {
 				case "a":
-					int value = sc.nextInt();
-					bst.add(value);
+					int data = sc.nextInt();
+					bst.add(data);
 					break;
 				case "p":
 					bst.print();
 					break;
 				case "i":
 					int ith = sc.nextInt();
-					System.out.println(bst.select(ith).getData());
+					BST<Integer>.Node node = bst.select(ith);
+					System.out.println(node == null ? "null" : node.getData());
+					break;
+				case "r":
+					data = sc.nextInt();
+					System.out.println(bst.rankWithParentLink(data));
 					break;
 			}
 		}
